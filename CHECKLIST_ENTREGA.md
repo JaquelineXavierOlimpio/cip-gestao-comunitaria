@@ -1,7 +1,7 @@
 # Checklist de entrega
 
 ## Para a ONG
-- [ ] Link do GitHub
+- - [x] Link do GitHub: https://github.com/JaquelineXavierOlimpio/cip-gestao-comunitaria
 - [ ] Arquivo ZIP do projeto
 - [ ] Instruções de abertura
 - [ ] Explicação curta do que o MVP faz
