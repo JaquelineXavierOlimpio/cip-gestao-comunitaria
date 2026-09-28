@@ -2,7 +2,7 @@
 
 ## Para a ONG
 - - [x] Link do GitHub: https://github.com/JaquelineXavierOlimpio/cip-gestao-comunitaria
-- [ ] Arquivo ZIP do projeto
+- [ x] Arquivo ZIP do projeto
 - [ ] Instruções de abertura
 - [ ] Explicação curta do que o MVP faz
 - [ ] Confirmação de que os dados de demonstração são fictícios
