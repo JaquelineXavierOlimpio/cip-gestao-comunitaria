@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CIP - Gestão de participantes, cursos e presença para uma ONG comunitária." />
+  <title>CIP | Gestão Comunitária</title>
+<style>
+:root{--bg:#f5f7fb;--surface:#fff;--text:#172033;--muted:#697386;--primary:#5b46e8;--primary-2:#7a67ef;--border:#e6e9f0;--success:#16875a;--danger:#c63d4f;--shadow:0 10px 30px rgba(25,31,50,.07);--radius:16px}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:#17182b;color:#fff;padding:22px 15px;display:flex;flex-direction:column}.brand{display:flex;gap:11px;align-items:center;padding:6px 10px 28px}.brand-mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#8b7cff,#5b46e8);display:grid;place-items:center;font-weight:800}.brand strong,.brand span{display:block}.brand strong{font-size:12px;line-height:1.25}.brand span{font-size:11px;color:#b8b9c9;margin-top:3px}nav{display:grid;gap:5px}.nav-item{border:0;background:transparent;color:#c7c8d5;text-align:left;padding:12px 13px;border-radius:11px;display:flex;gap:11px;align-items:center}.nav-item:hover,.nav-item.active{background:#2a2b45;color:#fff}.sidebar-foot{margin-top:auto;color:#85879c;font-size:11px;line-height:1.5;padding:10px}.main{margin-left:245px;min-height:100vh}.topbar{height:88px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:17px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.eyebrow{font-size:10px;font-weight:800;letter-spacing:.14em;color:var(--primary)}h1{margin:2px 0 0;font-size:25px}.top-actions{display:flex;align-items:center;gap:18px;color:var(--muted);font-size:13px}.btn{border:0;border-radius:10px;padding:10px 15px;font-weight:700}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#4c39d6}.btn-light{background:#f0f2f7;color:var(--text)}.btn-danger{background:#fff0f1;color:var(--danger)}.content{padding:28px 32px}.grid{display:grid;gap:18px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}.stat .label{font-size:12px;color:var(--muted)}.stat .value{font-size:30px;font-weight:800;margin:7px 0}.stat .hint{font-size:11px;color:var(--muted)}.two{grid-template-columns:1.25fr .75fr;margin-top:18px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.section-title h2{font-size:16px;margin:0}.muted{color:var(--muted)}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:13px 10px;border-bottom:1px solid var(--border);font-size:13px;text-align:left;white-space:nowrap}.table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em}.badge{display:inline-flex;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:800;background:#eef0ff;color:#5544c8}.badge.green{background:#eaf8f1;color:#16875a}.badge.red{background:#fff0f1;color:#c63d4f}.actions{display:flex;gap:6px}.icon-btn{border:0;background:#f1f3f7;border-radius:8px;padding:7px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.input,.select,.textarea{border:1px solid #dfe3ec;background:#fff;border-radius:10px;padding:10px 11px;outline:none;width:100%}.input:focus,.select:focus,.textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(91,70,232,.1)}.search{max-width:350px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field{display:grid;gap:6px}.field label{font-size:12px;font-weight:700}.full{grid-column:1/-1}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.empty{text-align:center;padding:35px;color:var(--muted)}.course-grid{grid-template-columns:repeat(3,1fr)}.course-card{min-height:155px}.course-icon{font-size:28px}.course-card h3{margin:9px 0 5px}.course-meta{font-size:12px;color:var(--muted)}.attendance-head{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-bottom:16px}.person-row{display:grid;grid-template-columns:1fr 130px 120px;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}.check{display:flex;align-items:center;gap:8px;font-size:13px}.check input{width:18px;height:18px}.bar{height:10px;background:#edf0f5;border-radius:99px;overflow:hidden}.bar>span{display:block;height:100%;background:linear-gradient(90deg,#5b46e8,#8b7cff);border-radius:99px}.report-kpis{grid-template-columns:repeat(3,1fr)}.notice{padding:13px 15px;background:#f3f1ff;border:1px solid #dfd9ff;border-radius:12px;color:#493aa4;font-size:12px;line-height:1.5}.modal{position:fixed;inset:0;background:rgba(10,12,25,.5);display:grid;place-items:center;padding:20px;z-index:20}.modal.hidden,.toast.hidden{display:none}.modal-card{width:min(720px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:18px;padding:25px;position:relative}.modal-close{position:absolute;right:15px;top:12px;border:0;background:#f0f2f7;width:32px;height:32px;border-radius:50%;font-size:22px}.modal-card h2{margin-top:0}.toast{position:fixed;right:25px;bottom:25px;background:#17182b;color:#fff;padding:12px 17px;border-radius:10px;z-index:30;box-shadow:var(--shadow);font-size:13px}.chart{display:grid;gap:12px}.chart-line{display:grid;grid-template-columns:95px 1fr 45px;align-items:center;gap:9px;font-size:11px}.small{font-size:11px}.footer-note{margin-top:20px;color:var(--muted);font-size:11px}.danger-note{color:#9b3341}.print-only{display:none}@media(max-width:950px){.sidebar{width:72px}.brand strong,.brand span,.nav-item span,.sidebar-foot{display:none}.brand{justify-content:center;padding-left:0;padding-right:0}.main{margin-left:72px}.stats,.course-grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:650px){.topbar{padding:15px 17px}.top-actions #today-label{display:none}.content{padding:18px}.stats,.course-grid,.report-kpis,.form-grid{grid-template-columns:1fr}.attendance-head{grid-template-columns:1fr}.person-row{grid-template-columns:1fr 100px 90px}.table th:nth-child(3),.table td:nth-child(3){display:none}}
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">CIP</div>
+        <div><strong>Centro de Identidade</strong><span>Gestão Comunitária</span></div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-view="dashboard">📊 <span>Painel</span></button>
+        <button class="nav-item" data-view="participants">👥 <span>Participantes</span></button>
+        <button class="nav-item" data-view="courses">🎭 <span>Cursos</span></button>
+        <button class="nav-item" data-view="attendance">✓ <span>Presença</span></button>
+        <button class="nav-item" data-view="reports">📈 <span>Relatórios</span></button>
+        <button class="nav-item" data-view="settings">⚙️ <span>Dados e backup</span></button>
+      </nav>
+      <div class="sidebar-foot">MVP • Projeto Prático<br>Dados de demonstração</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">PROJETO DE EXTENSÃO</div><h1 id="page-title">Painel</h1></div>
+        <div class="top-actions"><span id="today-label"></span><button class="btn btn-primary" id="quick-add">+ Novo cadastro</button></div>
+      </header>
+      <section id="content"></section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="modal"><div class="modal-card"><button class="modal-close" id="modal-close">×</button><div id="modal-content"></div></div></div>
+  <div class="toast hidden" id="toast"></div>
+<script>
+const KEY='cip_mvp_v1';
+const seed={
+ participants:[
+  {id:'P001',name:'Ana Souza',birth:'2008-04-12',phone:'(11) 98888-1111',neighborhood:'Periferia Norte',responsible:'Maria Souza',active:true,created:'2026-09-01'},
+  {id:'P002',name:'Carlos Oliveira',birth:'1999-11-03',phone:'(11) 97777-2222',neighborhood:'Jardim União',responsible:'',active:true,created:'2026-09-02'},
+  {id:'P003',name:'Beatriz Santos',birth:'2013-07-22',phone:'(11) 96666-3333',neighborhood:'Vila Esperança',responsible:'João Santos',active:true,created:'2026-09-04'},
+  {id:'P004',name:'Rafael Lima',birth:'1988-02-18',phone:'(11) 95555-4444',neighborhood:'Jardim União',responsible:'',active:true,created:'2026-09-05'},
+  {id:'P005',name:'Lucas Pereira',birth:'2010-09-15',phone:'(11) 94444-5555',neighborhood:'Vila Esperança',responsible:'Paula Pereira',active:true,created:'2026-09-07'}
+ ],
+ courses:[
+  {id:'C001',name:'Capoeira',teacher:'Professor João',day:'Terça e quinta',time:'18:00',active:true},
+  {id:'C002',name:'Hip Hop',teacher:'Professora Carla',day:'Quarta',time:'18:30',active:true},
+  {id:'C003',name:'Dança do Ventre',teacher:'Professora Lúcia',day:'Sexta',time:'17:30',active:true},
+  {id:'C004',name:'SambaRock',teacher:'Professor André',day:'Sábado',time:'17:00',active:true},
+  {id:'C006',name:'Informática',teacher:'A definir',day:'A definir',time:'A definir',active:false}
+ ],
+ enrollments:[
+  {participantId:'P001',courseId:'C002',since:'2026-09-02'},
+  {participantId:'P001',courseId:'C001',since:'2026-09-03'},
+  {participantId:'P002',courseId:'C004',since:'2026-09-05'},
+  {participantId:'P003',courseId:'C003',since:'2026-09-05'},
+  {participantId:'P004',courseId:'C004',since:'2026-09-06'},
+  {participantId:'P005',courseId:'C001',since:'2026-09-07'}
+ ],
+ attendance:[
+  {date:'2026-09-22',courseId:'C001',participantId:'P001',present:true},
+  {date:'2026-09-22',courseId:'C001',participantId:'P005',present:true},
+  {date:'2026-09-23',courseId:'C002',participantId:'P001',present:true},
+  {date:'2026-09-24',courseId:'C001',participantId:'P001',present:false},
+  {date:'2026-09-24',courseId:'C001',participantId:'P005',present:true},
+  {date:'2026-09-25',courseId:'C003',participantId:'P003',present:true},
+  {date:'2026-09-26',courseId:'C004',participantId:'P002',present:true},
+  {date:'2026-09-26',courseId:'C004',participantId:'P004',present:true}
+ ]
+};
+let db=load(); let currentView='dashboard';
+function load(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(KEY));
+    if(!saved) return structuredClone(seed);
+    const sambaRock=(saved.courses||[]).find(c=>c.name==='SambaRock');
+    const removedIds=new Set((saved.courses||[]).filter(c=>c.name==='Rock'||c.name==='Samba').map(c=>c.id));
+    let targetId=sambaRock?sambaRock.id:'C004';
+    if(!sambaRock){
+      const seedCourse=seed.courses.find(c=>c.name==='SambaRock');
+      saved.courses=(saved.courses||[]).filter(c=>c.name!=='Rock'&&c.name!=='Samba');
+      saved.courses.push(structuredClone(seedCourse));
+    }else{
+      saved.courses=(saved.courses||[]).filter(c=>c.name!=='Rock'&&c.name!=='Samba');
+    }
+    saved.enrollments=(saved.enrollments||[]).map(e=>removedIds.has(e.courseId)?{...e,courseId:targetId}:e);
+    saved.attendance=(saved.attendance||[]).map(a=>removedIds.has(a.courseId)?{...a,courseId:targetId}:a);
+    return saved;
+  }catch{return structuredClone(seed)}
+}
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+function $(s){return document.querySelector(s)}
+function esc(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function fmtDate(s){if(!s)return '-'; const [y,m,d]=s.split('-'); return `${d}/${m}/${y}`}
+function today(){return new Date().toISOString().slice(0,10)}
+function course(id){return db.courses.find(x=>x.id===id)}
+function person(id){return db.participants.find(x=>x.id===id)}
+function activeEnrollments(pid){return db.enrollments.filter(x=>x.participantId===pid)}
+function showToast(msg){const t=$('#toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2300)}
+function openModal(html){$('#modal-content').innerHTML=html;$('#modal').classList.remove('hidden')}
+function closeModal(){$('#modal').classList.add('hidden')}
+function nextId(prefix,arr){return prefix+String(arr.length+1).padStart(3,'0')}
+function render(){
+ const titles={dashboard:'Painel',participants:'Participantes',courses:'Cursos',attendance:'Presença',reports:'Relatórios',settings:'Dados e backup'};
+ $('#page-title').textContent=titles[currentView]; $('#today-label').textContent=new Date().toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'});
+ document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.view===currentView));
+ const content=$('#content'); content.className='content';
+ ({dashboard:renderDashboard,participants:renderParticipants,courses:renderCourses,attendance:renderAttendance,reports:renderReports,settings:renderSettings}[currentView])();
+}
+function renderDashboard(){
+ const active=db.participants.filter(p=>p.active).length, activeCourses=db.courses.filter(c=>c.active).length;
+ const enroll=db.enrollments.length, todayAtt=db.attendance.filter(a=>a.date===today()&&a.present).length;
+ const latest=[...db.attendance].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6);
+ $('#content').innerHTML=`<div class="grid stats">
+ <div class="card stat"><div class="label">Participantes ativos</div><div class="value">${active}</div><div class="hint">pessoas cadastradas</div></div>
+ <div class="card stat"><div class="label">Cursos ativos</div><div class="value">${activeCourses}</div><div class="hint">atividades oferecidas</div></div>
+ <div class="card stat"><div class="label">Inscrições em cursos</div><div class="value">${enroll}</div><div class="hint">uma pessoa pode fazer vários cursos</div></div>
+ <div class="card stat"><div class="label">Presenças hoje</div><div class="value">${todayAtt}</div><div class="hint">registradas no sistema</div></div></div>
+ <div class="grid two"><div class="card"><div class="section-title"><h2>Últimas presenças</h2><button class="btn btn-light" onclick="go('attendance')">Registrar presença</button></div>
+ ${latest.length?`<div class="table-wrap"><table class="table"><thead><tr><th>Data</th><th>Participante</th><th>Curso</th><th>Status</th></tr></thead><tbody>${latest.map(a=>`<tr><td>${fmtDate(a.date)}</td><td>${esc(person(a.participantId)?.name||'—')}</td><td>${esc(course(a.courseId)?.name||'—')}</td><td><span class="badge ${a.present?'green':'red'}">${a.present?'Presente':'Falta'}</span></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">Nenhuma presença registrada.</div>'}</div>
+ <div class="card"><div class="section-title"><h2>Como usar</h2></div><div class="notice"><strong>Fluxo sugerido:</strong><br>1. Cadastre a pessoa.<br>2. Inscreva em um ou mais cursos.<br>3. O professor registra presença.<br>4. A coordenação acompanha os indicadores.<br>5. Faça backup periodicamente.</div><p class="footer-note">Este MVP guarda os dados no navegador. Para uso real em vários computadores, a próxima evolução é conectar um banco em nuvem com acesso protegido.</p></div></div>`;
+}
+function renderParticipants(){
+ $('#content').innerHTML=`<div class="card"><div class="section-title"><h2>Cadastro de participantes</h2><button type="button" class="btn btn-primary" onclick="openParticipant()">+ Novo participante</button></div><div class="toolbar"><input class="input search" id="participant-search" placeholder="Buscar por nome, bairro ou telefone..." oninput="filterParticipants()"></div><div class="table-wrap"><table class="table"><thead><tr><th>Nome</th><th>Nascimento</th><th>Telefone</th><th>Bairro</th><th>Cursos</th><th>Status</th><th></th></tr></thead><tbody id="participant-body"></tbody></table></div></div>`; filterParticipants();
+}
+function filterParticipants(){const q=($('#participant-search')?.value||'').toLowerCase(); const rows=db.participants.filter(p=>[p.name,p.phone,p.neighborhood].join(' ').toLowerCase().includes(q)); $('#participant-body').innerHTML=rows.length?rows.map(p=>`<tr><td><strong>${esc(p.name)}</strong></td><td>${fmtDate(p.birth)}</td><td>${esc(p.phone)}</td><td>${esc(p.neighborhood)}</td><td>${activeEnrollments(p.id).length}</td><td><span class="badge ${p.active?'green':'red'}">${p.active?'Ativo':'Inativo'}</span></td><td><div class="actions"><button class="icon-btn" title="Editar" onclick="openParticipant('${p.id}')">✏️</button><button class="icon-btn" title="Cursos" onclick="openEnroll('${p.id}')">🎭</button><button class="icon-btn" title="${p.active?'Inativar':'Ativar'}" onclick="toggleParticipant('${p.id}')">${p.active?'⏸️':'▶️'}</button><button class="icon-btn" title="Excluir definitivamente" onclick="deleteParticipant('${p.id}')">🗑️</button></div></td></tr>`).join(''):`<tr><td colspan="7"><div class="empty">Nenhum participante encontrado.</div></td></tr>`}
+function openParticipant(id=''){const p=id?person(id):{id:'',name:'',birth:'',phone:'',neighborhood:'',responsible:'',active:true};openModal(`<h2>${id?'Editar participante':'Novo participante'}</h2><form id="participant-form" class="form-grid"><div class="field full"><label>Nome completo *</label><input class="input" name="name" value="${esc(p.name)}" required></div><div class="field"><label>Data de nascimento</label><input class="input" type="date" name="birth" value="${p.birth}"></div><div class="field"><label>Telefone</label><input class="input" name="phone" value="${esc(p.phone)}" placeholder="(11) 99999-9999"></div><div class="field"><label>Bairro / região</label><input class="input" name="neighborhood" value="${esc(p.neighborhood)}"></div><div class="field"><label>Responsável (se menor de idade)</label><input class="input" name="responsible" value="${esc(p.responsible)}"></div><div class="field full"><div class="notice">MVP de demonstração: evite inserir CPF, documentos ou outras informações sensíveis sem autorização da instituição. Para o primeiro cadastro, use somente os dados necessários para organizar as atividades.</div></div><div class="form-actions full"><button type="button" class="btn btn-light" onclick="closeModal()">Cancelar</button><button class="btn btn-primary">Salvar cadastro</button></div></form>`); $('#participant-form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target); if(id){Object.assign(p,{name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),neighborhood:f.get('neighborhood'),responsible:f.get('responsible')})}else{db.participants.push({id:nextId('P',db.participants),name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),neighborhood:f.get('neighborhood'),responsible:f.get('responsible'),active:true,created:today()})}save();closeModal();render();showToast('Cadastro salvo.');}}
+function toggleParticipant(id){const p=person(id);if(!p)return;const action=p.active?'inativar':'reativar';if(confirm(`${p.active?'Inativar':'Reativar'} o participante "${p.name}"?`)){p.active=!p.active;save();render();showToast(`Participante ${p.active?'reativado':'inativado'}.`);}}
+function deleteParticipant(id){const p=person(id);if(!p)return;const ok=confirm(`Excluir definitivamente "${p.name}"?\n\nIsso removerá o cadastro, as inscrições nos cursos e o histórico de presença dessa pessoa. Essa ação não pode ser desfeita.
+
+Para apenas retirar a pessoa da rotina, use Inativar.`);if(!ok)return;db.participants=db.participants.filter(x=>x.id!==id);db.enrollments=db.enrollments.filter(x=>x.participantId!==id);db.attendance=db.attendance.filter(x=>x.participantId!==id);save();render();showToast('Participante excluído definitivamente.');}
+function openEnroll(pid){const p=person(pid); const enrolled=new Set(activeEnrollments(pid).map(e=>e.courseId));openModal(`<h2>Cursos de ${esc(p.name)}</h2><p class="muted small">Marque os cursos que a pessoa frequenta. O sistema permite mais de um curso por participante.</p><form id="enroll-form">${db.courses.map(c=>`<label class="check" style="padding:11px 0;border-bottom:1px solid var(--border)"><input type="checkbox" name="course" value="${c.id}" ${enrolled.has(c.id)?'checked':''} ${!c.active?'disabled':''}> <span><strong>${esc(c.name)}</strong> — ${esc(c.day)}, ${esc(c.time)}</span></label>`).join('')}<div class="form-actions"><button type="button" class="btn btn-light" onclick="closeModal()">Cancelar</button><button class="btn btn-primary">Salvar inscrições</button></div></form>`); $('#enroll-form').onsubmit=e=>{e.preventDefault();db.enrollments=db.enrollments.filter(x=>x.participantId!==pid);e.target.querySelectorAll('input[name=course]:checked').forEach(i=>db.enrollments.push({participantId:pid,courseId:i.value,since:today()}));save();closeModal();render();showToast('Inscrições atualizadas.')}}
+function renderCourses(){$('#content').innerHTML=`<div class="grid course-grid">${db.courses.map(c=>`<div class="card course-card"><div class="course-icon">${c.name==='Capoeira'?'🥋':c.name==='Hip Hop'?'🎧':c.name==='Dança do Ventre'?'💃':c.name==='Samba'?'🕺':c.name==='SambaRock'?'🎸':'💻'}</div><h3>${esc(c.name)}</h3><div class="course-meta">${esc(c.teacher)}<br>${esc(c.day)} • ${esc(c.time)}</div><div style="margin-top:13px"><span class="badge ${c.active?'green':'red'}">${c.active?'Ativo':'Planejado'}</span> <span class="small muted">${db.enrollments.filter(e=>e.courseId===c.id).length} inscritos</span></div><div style="margin-top:12px"><button class="btn btn-light" onclick="downloadCourseRoster('${c.id}')">⬇ Baixar lista</button></div></div>`).join('')}</div><div class="card" style="margin-top:18px"><div class="section-title"><h2>Regra operacional proposta</h2></div><p class="muted small">O participante deve estar cadastrado e inscrito no curso antes de registrar a presença. Isso cria uma trilha mínima de participação e evita que a entrada na sala seja o único controle.</p></div>`}
+function renderAttendance(){const activeCourses=db.courses.filter(c=>c.active); $('#content').innerHTML=`<div class="card"><div class="section-title"><h2>Chamada</h2><span class="muted small">Registre a presença por curso e data.</span></div><div class="attendance-head"><select class="select" id="att-course">${activeCourses.map(c=>`<option value="${c.id}">${esc(c.name)} — ${esc(c.teacher)}</option>`).join('')}</select><input class="input" type="date" id="att-date" value="${today()}"></div><div id="att-list"></div><div class="form-actions"><button class="btn btn-light" onclick="downloadAttendanceCsv()">⬇ Baixar chamada</button><button class="btn btn-primary" onclick="saveAttendance()">Salvar chamada</button></div></div>`; $('#att-course').onchange=loadAttendanceList; $('#att-date').onchange=loadAttendanceList; loadAttendanceList();}
+function loadAttendanceList(){const cid=$('#att-course').value,date=$('#att-date').value;const enrolled=db.enrollments.filter(e=>e.courseId===cid).map(e=>person(e.participantId)).filter(Boolean);const existing=new Map(db.attendance.filter(a=>a.courseId===cid&&a.date===date).map(a=>[a.participantId,a.present]));$('#att-list').innerHTML=enrolled.length?enrolled.map(p=>`<div class="person-row"><div><strong>${esc(p.name)}</strong><div class="small muted">${esc(p.neighborhood)}</div></div><label class="check"><input type="checkbox" data-pid="${p.id}" ${existing.get(p.id)?'checked':''}> Presente</label><span class="small muted">${existing.has(p.id)?(existing.get(p.id)?'Registrado':'Falta registrada'):'Não registrado'}</span></div>`).join(''):'<div class="empty">Nenhum participante inscrito neste curso.</div>'}
+function saveAttendance(){const cid=$('#att-course').value,date=$('#att-date').value;db.attendance=db.attendance.filter(a=>!(a.courseId===cid&&a.date===date));document.querySelectorAll('#att-list input[data-pid]').forEach(i=>db.attendance.push({date,courseId:cid,participantId:i.dataset.pid,present:i.checked}));save();showToast('Chamada salva com sucesso.');loadAttendanceList();}
+function downloadCsv(filename,rows){const csv=rows.map(row=>row.map(v=>{const x=String(v??'').replace(/"/g,'""');return `"${x}"`}).join(';')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function downloadAttendanceCsv(){const cid=$('#att-course')?.value,date=$('#att-date')?.value;if(!cid||!date){showToast('Selecione curso e data.');return}const c=course(cid);const rows=[['Curso','Data','Participante','Bairro','Presença']];db.enrollments.filter(e=>e.courseId===cid).map(e=>person(e.participantId)).filter(Boolean).forEach(p=>{const rec=db.attendance.find(a=>a.courseId===cid&&a.date===date&&a.participantId===p.id);rows.push([c?.name||'',fmtDate(date),p.name,p.neighborhood,rec?.present?'Presente':(rec?'Falta':'Não registrado')])});downloadCsv(`chamada-${(c?.name||'curso').replace(/\s+/g,'-').toLowerCase()}-${date}.csv`,rows);showToast('Lista de chamada baixada.')}
+function downloadCourseRoster(cid){const c=course(cid);const rows=[['Curso','Professor','Dia','Horário','Participante','Telefone','Bairro','Inscrito desde']];db.enrollments.filter(e=>e.courseId===cid).forEach(e=>{const p=person(e.participantId);if(p)rows.push([c?.name||'',c?.teacher||'',c?.day||'',c?.time||'',p.name,p.phone,p.neighborhood,fmtDate(e.since)])});downloadCsv(`lista-${(c?.name||'curso').replace(/\s+/g,'-').toLowerCase()}.csv`,rows);showToast('Lista do curso baixada.')}
+function renderReports(){const active=db.participants.filter(p=>p.active);const records=db.attendance;const present=records.filter(x=>x.present).length;const total=records.length;const rate=total?Math.round(present/total*100):0;const byCourse=db.courses.filter(c=>c.active).map(c=>{const rs=records.filter(a=>a.courseId===c.id);return {name:c.name,total:rs.length,p:rs.filter(a=>a.present).length,rate:rs.length?Math.round(rs.filter(a=>a.present).length/rs.length*100):0}});$('#content').innerHTML=`<div class="grid report-kpis"><div class="card stat"><div class="label">Participantes ativos</div><div class="value">${active.length}</div><div class="hint">base atual</div></div><div class="card stat"><div class="label">Registros de presença</div><div class="value">${total}</div><div class="hint">presenças + faltas</div></div><div class="card stat"><div class="label">Taxa de presença</div><div class="value">${rate}%</div><div class="hint">sobre os registros existentes</div></div></div><div class="card" style="margin-top:18px"><div class="section-title"><h2>Frequência por curso</h2><button class="btn btn-light" onclick="window.print()">Imprimir / PDF</button></div><div class="chart">${byCourse.map(x=>`<div class="chart-line"><span>${esc(x.name)}</span><div class="bar"><span style="width:${x.rate}%"></span></div><strong>${x.rate}%</strong></div>`).join('')}</div><p class="footer-note">Indicadores só representam os registros lançados no sistema; não devem ser interpretados como frequência real antes da adoção do processo.</p></div>`}
+function renderSettings(){$('#content').innerHTML=`<div class="grid two"><div class="card"><div class="section-title"><h2>Backup e restauração</h2></div><p class="muted small">Este protótipo usa armazenamento local do navegador. Exporte um arquivo JSON para guardar uma cópia dos dados de teste.</p><div class="form-actions" style="justify-content:flex-start"><button class="btn btn-primary" onclick="exportData()">⬇ Exportar backup</button><label class="btn btn-light" style="display:inline-flex;align-items:center">⬆ Importar backup<input type="file" id="import-file" accept="application/json" hidden onchange="importData(event)"></label></div></div><div class="card"><div class="section-title"><h2>Reiniciar demonstração</h2></div><p class="muted small">Apaga alterações feitas neste navegador e restaura os dados fictícios do projeto.</p><button class="btn btn-danger" onclick="resetDemo()">Restaurar dados de demonstração</button></div></div><div class="card" style="margin-top:18px"><h2 style="font-size:16px">Próxima evolução</h2><p class="muted small">Para implantação real em mais de um computador/celular, trocar o armazenamento local por banco em nuvem com autenticação, perfis de acesso, backup e políticas de segurança.</p></div>`}
+function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`backup-cip-${today()}.json`;a.click();URL.revokeObjectURL(a.href);showToast('Backup exportado.')}
+function importData(e){const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.participants||!x.courses||!x.attendance)throw Error();db=x;save();render();showToast('Backup importado.')}catch{showToast('Arquivo de backup inválido.')}};r.readAsText(file)}
+function resetDemo(){if(confirm('Restaurar os dados fictícios? As alterações locais serão perdidas.')){db=structuredClone(seed);save();render();showToast('Demonstração restaurada.')}}
+function go(v){currentView=v;render()}
+function initApp(){
+ document.addEventListener('click',e=>{
+  const nav=e.target.closest('.nav-item');
+  if(nav){go(nav.dataset.view);return;}
+  const quick=e.target.closest('#quick-add');
+  if(quick){go('participants'); setTimeout(()=>openParticipant(),0); return;}
+  const close=e.target.closest('#modal-close');
+  if(close){closeModal();return;}
+  if(e.target.id==='modal'){closeModal();return;}
+ });
+ window.go=go;window.openParticipant=openParticipant;window.openEnroll=openEnroll;window.filterParticipants=filterParticipants;window.saveAttendance=saveAttendance;window.exportData=exportData;window.importData=importData;window.resetDemo=resetDemo;window.closeModal=closeModal;window.downloadAttendanceCsv=downloadAttendanceCsv;window.downloadCourseRoster=downloadCourseRoster;window.toggleParticipant=toggleParticipant;window.deleteParticipant=deleteParticipant;
+ render();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initApp)}else{initApp()}
+
+</script>
+</body>
+</html>

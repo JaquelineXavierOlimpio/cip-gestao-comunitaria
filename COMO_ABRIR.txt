@@ -1,0 +1,10 @@
+CIP | Gestão Comunitária
+
+1. Extraia a pasta.
+2. Abra o arquivo index.html no navegador.
+3. O sistema funciona como um MVP local e usa localStorage do navegador.
+4. Os dados apresentados inicialmente são fictícios, para demonstração.
+5. Para guardar uma cópia dos dados, use “Dados e backup” > “Exportar backup”.
+6. Em “Cursos”, o botão “Baixar lista” gera a lista de inscritos do curso em CSV.
+7. Em “Presença”, selecione curso e data e use “Baixar chamada” para gerar a lista da chamada em CSV.
+8. Para uso real pela ONG, não inserir dados pessoais reais sem autorização e sem definir controle de acesso, backup e segurança adequados.
