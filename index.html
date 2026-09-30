@@ -131,7 +131,47 @@ function renderParticipants(){
  $('#content').innerHTML=`<div class="card"><div class="section-title"><h2>Cadastro de participantes</h2><button type="button" class="btn btn-primary" onclick="openParticipant()">+ Novo participante</button></div><div class="toolbar"><input class="input search" id="participant-search" placeholder="Buscar por nome, bairro ou telefone..." oninput="filterParticipants()"></div><div class="table-wrap"><table class="table"><thead><tr><th>Nome</th><th>Nascimento</th><th>Telefone</th><th>Bairro</th><th>Cursos</th><th>Status</th><th></th></tr></thead><tbody id="participant-body"></tbody></table></div></div>`; filterParticipants();
 }
 function filterParticipants(){const q=($('#participant-search')?.value||'').toLowerCase(); const rows=db.participants.filter(p=>[p.name,p.phone,p.neighborhood].join(' ').toLowerCase().includes(q)); $('#participant-body').innerHTML=rows.length?rows.map(p=>`<tr><td><strong>${esc(p.name)}</strong></td><td>${fmtDate(p.birth)}</td><td>${esc(p.phone)}</td><td>${esc(p.neighborhood)}</td><td>${activeEnrollments(p.id).length}</td><td><span class="badge ${p.active?'green':'red'}">${p.active?'Ativo':'Inativo'}</span></td><td><div class="actions"><button class="icon-btn" title="Editar" onclick="openParticipant('${p.id}')">✏️</button><button class="icon-btn" title="Cursos" onclick="openEnroll('${p.id}')">🎭</button><button class="icon-btn" title="${p.active?'Inativar':'Ativar'}" onclick="toggleParticipant('${p.id}')">${p.active?'⏸️':'▶️'}</button><button class="icon-btn" title="Excluir definitivamente" onclick="deleteParticipant('${p.id}')">🗑️</button></div></td></tr>`).join(''):`<tr><td colspan="7"><div class="empty">Nenhum participante encontrado.</div></td></tr>`}
-function openParticipant(id=''){const p=id?person(id):{id:'',name:'',birth:'',phone:'',neighborhood:'',responsible:'',active:true};openModal(`<h2>${id?'Editar participante':'Novo participante'}</h2><form id="participant-form" class="form-grid"><div class="field full"><label>Nome completo *</label><input class="input" name="name" value="${esc(p.name)}" required></div><div class="field"><label>Data de nascimento</label><input class="input" type="date" name="birth" value="${p.birth}"></div><div class="field"><label>Telefone</label><input class="input" name="phone" value="${esc(p.phone)}" placeholder="(11) 99999-9999"></div><div class="field"><label>Bairro / região</label><input class="input" name="neighborhood" value="${esc(p.neighborhood)}"></div><div class="field"><label>Responsável (se menor de idade)</label><input class="input" name="responsible" value="${esc(p.responsible)}"></div><div class="field full"><div class="notice">MVP de demonstração: evite inserir CPF, documentos ou outras informações sensíveis sem autorização da instituição. Para o primeiro cadastro, use somente os dados necessários para organizar as atividades.</div></div><div class="form-actions full"><button type="button" class="btn btn-light" onclick="closeModal()">Cancelar</button><button class="btn btn-primary">Salvar cadastro</button></div></form>`); $('#participant-form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target); if(id){Object.assign(p,{name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),neighborhood:f.get('neighborhood'),responsible:f.get('responsible')})}else{db.participants.push({id:nextId('P',db.participants),name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),neighborhood:f.get('neighborhood'),responsible:f.get('responsible'),active:true,created:today()})}save();closeModal();render();showToast('Cadastro salvo.');}}
+  function formatCep(input){
+  let value=input.value.replace(/\D/g,'').slice(0,8);
+  if(value.length>5){
+    value=value.slice(0,5)+'-'+value.slice(5);
+  }
+  input.value=value;
+}
+
+async function lookupCep(){
+  const input=$('#participant-cep');
+  if(!input)return;
+
+  const cep=input.value.replace(/\D/g,'');
+
+  if(cep.length!==8)return;
+
+  try{
+    const response=await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data=await response.json();
+
+    if(data.erro){
+      showToast('CEP não encontrado.');
+      return;
+    }
+
+    $('#participant-street').value=data.logradouro||'';
+    $('#participant-neighborhood').value=data.bairro||'';
+    $('#participant-city').value=data.localidade||'';
+    $('#participant-state').value=data.uf||'';
+
+  }catch(error){
+    showToast('Não foi possível consultar o CEP.');
+  }
+}
+function openParticipant(id=''){const p=id?person(id):{id:'',name:'',birth:'',phone:'',cep:'',street:'',number:'',complement:'',neighborhood:'',city:'',state:'',responsible:'',active:true};openModal(`<h2>${id?'Editar participante':'Novo participante'}</h2><form id="participant-form" class="form-grid"><div class="field full"><label>Nome completo *</label><input class="input" name="name" value="${esc(p.name)}" required></div><div class="field"><label>Data de nascimento</label><input class="input" type="date" name="birth" value="${p.birth}"></div><div class="field"><label>Telefone</label><input class="input" name="phone" value="${esc(p.phone)}" placeholder="(11) 99999-9999"></div><div class="field"><label>CEP</label><input class="input" id="participant-cep" name="cep" value="${esc(p.cep||'')}" placeholder="00000-000" maxlength="9" oninput="formatCep(this)" onblur="lookupCep()"></div><div class="field"><label>Rua</label><input class="input" id="participant-street" name="street" value="${esc(p.street||'')}"></div><div class="field"><label>Número</label><input class="input" name="number" value="${esc(p.number||'')}" placeholder="Número"></div><div class="field"><label>Complemento</label><input class="input" name="complement" value="${esc(p.complement||'')}" placeholder="Apto, bloco, casa..."></div><div class="field"><label>Bairro / região</label><input class="input" id="participant-neighborhood" name="neighborhood" value="${esc(p.neighborhood||'')}"></div><div class="field"><label>Cidade</label><input class="input" id="participant-city" name="city" value="${esc(p.city||'')}"></div><div class="field"><label>Estado</label><input class="input" id="participant-state" name="state" value="${esc(p.state||'')}"></div><div class="field"><label>Responsável (se menor de idade)</label><input class="input" name="responsible" value="${esc(p.responsible)}"></div><div class="field full"><div class="notice">MVP de demonstração: evite inserir CPF, documentos ou outras informações sensíveis sem autorização da instituição. Para o primeiro cadastro, use somente os dados necessários para organizar as atividades.</div></div><div class="form-actions full"><button type="button" class="btn btn-light" onclick="closeModal()">Cancelar</button><button class="btn btn-primary">Salvar cadastro</button></div></form>`); $('#participant-form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);if(id){Object.assign(p,{name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),cep:f.get('cep'),street:f.get('street'),number:f.get('number'),complement:f.get('complement'),neighborhood:f.get('neighborhood'),city:f.get('city'),state:f.get('state'),responsible:f.get('responsible')})}else{db.participants.push({id:nextId('P',db.participants),name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),cep:f.get('cep'),street:f.get('street'),number:f.get('number'),complement:f.get('complement'),neighborhood:f.get('neighborhood'),city:f.get('city'),state:f.get('state'),responsible:f.get('responsible'),active:true,created:today()})}save();closeModal();render();showToast('Cadastro salvo.');}}
+<div class="field"><label>Rua</label><input class="input" id="participant-street" name="street" value="${esc(p.street||'')}"></div>
+<div class="field"><label>Número</label><input class="input" name="number" value="${esc(p.number||'')}" placeholder="Número"></div>
+<div class="field"><label>Complemento</label><input class="input" name="complement" value="${esc(p.complement||'')}" placeholder="Apto, bloco, casa..."></div>
+<div class="field"><label>Bairro / região</label><input class="input" id="participant-neighborhood" name="neighborhood" value="${esc(p.neighborhood||'')}"></div>
+<div class="field"><label>Cidade</label><input class="input" id="participant-city" name="city" value="${esc(p.city||'')}"></div>
+<div class="field"><label>Estado</label><input class="input" id="participant-state" name="state" value="${esc(p.state||'')}"></div><div class="field"><label>Responsável (se menor de idade)</label><input class="input" name="responsible" value="${esc(p.responsible)}"></div><div class="field full"><div class="notice">MVP de demonstração: evite inserir CPF, documentos ou outras informações sensíveis sem autorização da instituição. Para o primeiro cadastro, use somente os dados necessários para organizar as atividades.</div></div><div class="form-actions full"><button type="button" class="btn btn-light" onclick="closeModal()">Cancelar</button><button class="btn btn-primary">Salvar cadastro</button></div></form>`); $('#participant-form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target); if(id){Object.assign(p,{name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),neighborhood:f.get('neighborhood'),responsible:f.get('responsible')})}else{db.participants.push({id:nextId('P',db.participants),name:f.get('name'),birth:f.get('birth'),phone:f.get('phone'),neighborhood:f.get('neighborhood'),responsible:f.get('responsible'),active:true,created:today()})}save();closeModal();render();showToast('Cadastro salvo.');}}
 function toggleParticipant(id){const p=person(id);if(!p)return;const action=p.active?'inativar':'reativar';if(confirm(`${p.active?'Inativar':'Reativar'} o participante "${p.name}"?`)){p.active=!p.active;save();render();showToast(`Participante ${p.active?'reativado':'inativado'}.`);}}
 function deleteParticipant(id){const p=person(id);if(!p)return;const ok=confirm(`Excluir definitivamente "${p.name}"?\n\nIsso removerá o cadastro, as inscrições nos cursos e o histórico de presença dessa pessoa. Essa ação não pode ser desfeita.
 
@@ -160,7 +200,7 @@ function initApp(){
   if(close){closeModal();return;}
   if(e.target.id==='modal'){closeModal();return;}
  });
- window.go=go;window.openParticipant=openParticipant;window.openEnroll=openEnroll;window.filterParticipants=filterParticipants;window.saveAttendance=saveAttendance;window.exportData=exportData;window.importData=importData;window.resetDemo=resetDemo;window.closeModal=closeModal;window.downloadAttendanceCsv=downloadAttendanceCsv;window.downloadCourseRoster=downloadCourseRoster;window.toggleParticipant=toggleParticipant;window.deleteParticipant=deleteParticipant;
+ window.go=go;window.openParticipant=openParticipant;window.openEnroll=openEnroll;window.filterParticipants=filterParticipants;window.saveAttendance=saveAttendance;window.exportData=exportData;window.importData=importData;window.resetDemo=resetDemo;window.closeModal=closeModal;window.downloadAttendanceCsv=downloadAttendanceCsv;window.downloadCourseRoster=downloadCourseRoster;window.toggleParticipant=toggleParticipant;window.deleteParticipant=deleteParticipant;window.formatCep=formatCep;window.lookupCep=lookupCep;
  render();
 }
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initApp)}else{initApp()}
