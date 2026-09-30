@@ -9,10 +9,10 @@
 - [x] Orientação sobre as listas CSV
 
 ## Para a faculdade
-- [ ] Repositório GitHub atualizado
+- [x] Repositório GitHub atualizado
 - [ ] Relatório/documentação final
 - [ ] Evidências (prints/fotos/validação, quando aplicável)
-- [ ] Métricas de impacto levantadas ou planejadas
+- [x] Métricas de impacto levantadas ou planejadas
 - [ ] Vídeo pitch de até 4 minutos
 - [ ] Link do vídeo (pode ser não listado)
 - [ ] ZIP final, se solicitado pela plataforma
