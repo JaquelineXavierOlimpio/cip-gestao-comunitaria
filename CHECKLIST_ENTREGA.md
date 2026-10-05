@@ -10,12 +10,12 @@
 
 ## Para a faculdade
 - [x] Repositório GitHub atualizado
-- [ ] Relatório/documentação final
-- [ ] Evidências (prints/fotos/validação, quando aplicável)
+- [x] Relatório/documentação final
+- [x] Evidências (prints/fotos/validação, quando aplicável)
 - [x] Métricas de impacto levantadas ou planejadas
-- [ ] Vídeo pitch de até 4 minutos
-- [ ] Link do vídeo (pode ser não listado)
-- [ ] ZIP final, se solicitado pela plataforma
+- [x] Vídeo pitch de até 4 minutos
+- [x] Link do vídeo (pode ser não listado)
+- [x] ZIP final, se solicitado pela plataforma
 
 ## Registro
 Antes do envio, faça um último teste abrindo `projeto_cip/index.html`, cadastre um participante fictício, faça uma inscrição, registre uma chamada e baixe um CSV.
